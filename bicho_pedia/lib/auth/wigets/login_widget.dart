@@ -4,7 +4,8 @@ import 'package:bicho_pedia/auth/bloc/login/login_bloc.dart';
 import 'package:bicho_pedia/auth/repositories/auth_repository.dart';
 import 'package:bicho_pedia/auth/repositories/auth_repository_impl.dart';
 import 'package:bicho_pedia/auth/wigets/register_widget.dart';
-import 'package:bicho_pedia/screen/home_screen.dart';
+import 'package:bicho_pedia/page/home_page.dart';
+import 'package:bicho_pedia/page/register_page.dart';
 import 'package:blur/blur.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -25,11 +26,14 @@ class _LoginWidgetState extends State<LoginWidget> {
 
   late AuthRepository authRepository;
   late LoginBloc _loginBloc;
+  late bool _passwordVisible;
 
   @override
   void initState() {
     authRepository = AuthRepositoryImpl();
     _loginBloc = LoginBloc(authRepository);
+    _passwordVisible = false;
+
     super.initState();
   }
 
@@ -114,6 +118,8 @@ class _LoginWidgetState extends State<LoginWidget> {
                     const Gap(5),
                     TextFormField(
                       controller: userTextController,
+                      style: const TextStyle(
+                          color: Color.fromARGB(255, 164, 164, 164)),
                       decoration: const InputDecoration(
                           prefixIcon: Icon(
                             Icons.person,
@@ -154,25 +160,27 @@ class _LoginWidgetState extends State<LoginWidget> {
                     const Gap(5),
                     TextFormField(
                       controller: passTextController,
+                      style: const TextStyle(
+                          color: Color.fromARGB(255, 164, 164, 164)),
                       decoration: const InputDecoration(
-                          prefixIcon: Icon(
-                            Icons.key,
+                        prefixIcon: Icon(
+                          Icons.key,
+                          color: Color.fromARGB(255, 164, 164, 164),
+                        ),
+                        enabledBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.all(Radius.circular(8)),
+                            borderSide: BorderSide(
+                                color: Color.fromARGB(255, 164, 164, 164),
+                                width: 1)),
+                        labelText: 'Password',
+                        labelStyle: TextStyle(
                             color: Color.fromARGB(255, 164, 164, 164),
-                          ),
-                          enabledBorder: OutlineInputBorder(
-                              borderRadius:
-                                  BorderRadius.all(Radius.circular(8)),
-                              borderSide: BorderSide(
-                                  color: Color.fromARGB(255, 164, 164, 164),
-                                  width: 1)),
-                          labelText: 'Password',
-                          labelStyle: TextStyle(
-                              color: Color.fromARGB(255, 164, 164, 164),
-                              fontWeight: FontWeight.w200),
-                          focusedBorder: OutlineInputBorder(
-                              borderSide: BorderSide(
-                                  color: Color.fromARGB(255, 113, 113, 113))),
-                          floatingLabelBehavior: FloatingLabelBehavior.never),
+                            fontWeight: FontWeight.w200),
+                        focusedBorder: OutlineInputBorder(
+                            borderSide: BorderSide(
+                                color: Color.fromARGB(255, 113, 113, 113))),
+                        floatingLabelBehavior: FloatingLabelBehavior.never,
+                      ),
                       validator: (value) {
                         if (value == null || value.isEmpty) {
                           return 'Please enter some text';
@@ -193,7 +201,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => const RegisterWidget()),
+                                  builder: (context) => const RegisterPage()),
                             );
                           },
                         ),

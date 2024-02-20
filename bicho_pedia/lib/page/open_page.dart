@@ -1,5 +1,5 @@
 import 'package:bicho_pedia/auth/wigets/login_widget.dart';
-import 'package:bicho_pedia/screen/login_screen.dart';
+import 'package:bicho_pedia/page/login_page.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -85,7 +85,7 @@ class OpenApp extends StatelessWidget {
                                     context,
                                     MaterialPageRoute(
                                         builder: (context) =>
-                                            const LoginScreen()),
+                                            const LoginPage()),
                                   );
                                 },
                               ),
