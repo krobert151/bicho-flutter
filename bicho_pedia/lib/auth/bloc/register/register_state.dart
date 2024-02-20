@@ -6,8 +6,8 @@ sealed class RegisterState {}
 final class RegisterInitial extends RegisterState {}
 
 final class DoRegisterSuccess extends RegisterState {
-  final String message;
-  DoRegisterSuccess(this.message);
+  final LoginResponse userLogin;
+  DoRegisterSuccess(this.userLogin);
 }
 
 final class DoRegisterErrror extends RegisterState {

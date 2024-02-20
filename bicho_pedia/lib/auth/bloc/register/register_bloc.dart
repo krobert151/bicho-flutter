@@ -1,3 +1,4 @@
+import 'package:bicho_pedia/auth/models/login_response.dart';
 import 'package:bicho_pedia/auth/models/register_dto.dart';
 import 'package:bicho_pedia/auth/repositories/auth_repository.dart';
 import 'package:bloc/bloc.dart';

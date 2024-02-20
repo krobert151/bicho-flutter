@@ -1,5 +1,4 @@
 import 'dart:convert';
-import 'dart:developer';
 
 import 'package:bicho_pedia/auth/models/login_dto.dart';
 import 'package:bicho_pedia/auth/models/login_response.dart';
@@ -34,7 +33,7 @@ class AuthRepositoryImpl extends AuthRepository {
             },
             body: jsonEncode(registerDto.toJson()));
     if (response.statusCode == 201) {
-      return 'Resgitreao';
+      return LoginResponse.fromJson(json.decode(response.body));
     } else {
       Exception('Failed to Register');
     }

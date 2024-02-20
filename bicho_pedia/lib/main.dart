@@ -1,4 +1,4 @@
-import 'package:bicho_pedia/auth/wigets/login_widget.dart';
+import 'package:bicho_pedia/screen/open_screen.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -17,7 +17,7 @@ class MyApp extends StatelessWidget {
             ColorScheme.fromSeed(seedColor: Color.fromARGB(255, 255, 255, 255)),
         useMaterial3: true,
       ),
-      home: Scaffold(body: LoginWidget()),
+      home: Scaffold(body: OpenApp()),
     );
   }
 }
