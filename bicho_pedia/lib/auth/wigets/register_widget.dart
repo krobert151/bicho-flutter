@@ -3,8 +3,8 @@ import 'dart:ui';
 import 'package:bicho_pedia/auth/bloc/register/register_bloc.dart';
 import 'package:bicho_pedia/auth/repositories/auth_repository.dart';
 import 'package:bicho_pedia/auth/repositories/auth_repository_impl.dart';
-import 'package:bicho_pedia/page/home_page.dart';
 import 'package:bicho_pedia/page/login_page.dart';
+import 'package:bicho_pedia/page/menu_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gap/gap.dart';
@@ -54,7 +54,7 @@ class _RegisterWidgetState extends State<RegisterWidget> {
         },
         builder: (context, state) {
           if (state is DoRegisterSuccess) {
-            return const HomeScreenExample();
+            return const MenuScreen();
           } else if (state is DoRegisterErrror) {
             return const Text('Resgiter Error');
           }
@@ -297,79 +297,5 @@ class _RegisterWidgetState extends State<RegisterWidget> {
         ),
       ),
     );
-
-    /*return Form(
-        key: _fromRegister,
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          mainAxisSize: MainAxisSize.min,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            const Text(
-              'Login',
-              textAlign: TextAlign.start,
-              style: TextStyle(fontSize: 40),
-            ),
-            const SizedBox(
-              height: 20,
-            ),
-            TextFormField(
-              controller: userTextController,
-              decoration: const InputDecoration(
-                  border: OutlineInputBorder(), labelText: 'Username'),
-              validator: (value) {
-                if (value == null || value.isEmpty) {
-                  return 'Please enter some text';
-                }
-                return null;
-              },
-            ),
-            const SizedBox(
-              height: 20,
-            ),
-            TextFormField(
-              controller: emailTextController,
-              decoration: const InputDecoration(
-                  border: OutlineInputBorder(), labelText: 'Email'),
-              validator: (value) {
-                if (value == null || value.isEmpty) {
-                  return 'Please enter some text';
-                }
-                return null;
-              },
-            ),
-            const SizedBox(
-              height: 20,
-            ),
-            TextFormField(
-              controller: passTextController,
-              obscureText: true,
-              decoration: const InputDecoration(
-                  border: OutlineInputBorder(), labelText: 'Password'),
-              validator: (value) {
-                if (value == null || value.isEmpty) {
-                  return 'Please enter some text';
-                }
-                return null;
-              },
-            ),
-            const SizedBox(
-              height: 20,
-            ),
-            SizedBox(
-              width: double.infinity,
-              child: ElevatedButton(
-                child: Text('Register'.toUpperCase()),
-                onPressed: () {
-                  if (_fromRegister.currentState!.validate()) {
-                    _registerBloc.add(DoRegisterEvent(userTextController.text,
-                        emailTextController.text, passTextController.text));
-                  }
-                },
-              ),
-            ),
-          ],
-        ));
-  */
   }
 }

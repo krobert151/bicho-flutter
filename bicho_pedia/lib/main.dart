@@ -1,3 +1,4 @@
+import 'package:bicho_pedia/page/menu_page.dart';
 import 'package:bicho_pedia/page/open_page.dart';
 import 'package:flutter/material.dart';
 
@@ -17,7 +18,7 @@ class MyApp extends StatelessWidget {
             ColorScheme.fromSeed(seedColor: Color.fromARGB(255, 255, 255, 255)),
         useMaterial3: true,
       ),
-      home: Scaffold(body: OpenApp()),
+      home: Scaffold(body: MenuScreen()),
     );
   }
 }
