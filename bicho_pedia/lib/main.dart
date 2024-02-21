@@ -1,4 +1,4 @@
-import 'package:bicho_pedia/screen/open_screen.dart';
+import 'package:bicho_pedia/page/open_page.dart';
 import 'package:flutter/material.dart';
 
 void main() {
