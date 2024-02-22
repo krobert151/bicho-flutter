@@ -3,10 +3,8 @@ import 'dart:ui';
 import 'package:bicho_pedia/auth/bloc/login/login_bloc.dart';
 import 'package:bicho_pedia/auth/repositories/auth_repository.dart';
 import 'package:bicho_pedia/auth/repositories/auth_repository_impl.dart';
-import 'package:bicho_pedia/auth/wigets/register_widget.dart';
-import 'package:bicho_pedia/page/home_page.dart';
+import 'package:bicho_pedia/page/menu_page.dart';
 import 'package:bicho_pedia/page/register_page.dart';
-import 'package:blur/blur.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gap/gap.dart';
@@ -26,13 +24,11 @@ class _LoginWidgetState extends State<LoginWidget> {
 
   late AuthRepository authRepository;
   late LoginBloc _loginBloc;
-  late bool _passwordVisible;
 
   @override
   void initState() {
     authRepository = AuthRepositoryImpl();
     _loginBloc = LoginBloc(authRepository);
-    _passwordVisible = false;
 
     super.initState();
   }
@@ -57,7 +53,7 @@ class _LoginWidgetState extends State<LoginWidget> {
           },
           builder: (context, state) {
             if (state is DoLoginSuccess) {
-              return const HomeScreenExample();
+              return const MenuScreen();
             } else if (state is DoLoginError) {
               return const Text('Login error');
             }

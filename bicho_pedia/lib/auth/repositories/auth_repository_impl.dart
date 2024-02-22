@@ -35,7 +35,7 @@ class AuthRepositoryImpl extends AuthRepository {
     if (response.statusCode == 201) {
       return LoginResponse.fromJson(json.decode(response.body));
     } else {
-      Exception('Failed to Register');
+      throw Exception('Failed to Register');
     }
   }
 }
