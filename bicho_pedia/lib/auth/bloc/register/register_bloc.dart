@@ -26,6 +26,9 @@ class RegisterBloc extends Bloc<RegisterEvent, RegisterState> {
           email: event.email,
           password: event.password);
       final response = await authRepository.register(registerDto);
+      prefs.setString('token', response.token!);
+      prefs.setString('username', response.username!);
+
       emit(DoRegisterSuccess(response));
     } on Exception catch (e) {
       emit(DoRegisterErrror(e.toString()));

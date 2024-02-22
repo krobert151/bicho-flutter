@@ -1,6 +1,5 @@
 import 'package:bicho_pedia/auth/wigets/login_widget.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});

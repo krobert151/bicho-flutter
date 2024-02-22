@@ -1,3 +1,4 @@
+import 'package:bicho_pedia/page/home_page.dart';
 import 'package:flutter/material.dart';
 
 class MenuScreen extends StatefulWidget {
@@ -12,10 +13,7 @@ class _MenuScreenState extends State<MenuScreen> {
   static const TextStyle optionStyle =
       TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
   static const List<Widget> _widgetOptions = <Widget>[
-    Text(
-      'Home',
-      style: optionStyle,
-    ),
+    HomePage(),
     Text(
       'species',
       style: optionStyle,

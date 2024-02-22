@@ -1,5 +1,4 @@
-import 'package:bicho_pedia/page/menu_page.dart';
-import 'package:bicho_pedia/page/open_page.dart';
+import 'package:bicho_pedia/page/index.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -14,11 +13,11 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
-        colorScheme:
-            ColorScheme.fromSeed(seedColor: Color.fromARGB(255, 255, 255, 255)),
+        colorScheme: ColorScheme.fromSeed(
+            seedColor: const Color.fromARGB(255, 255, 255, 255)),
         useMaterial3: true,
       ),
-      home: Scaffold(body: MenuScreen()),
+      home: const Scaffold(body: OpenApp()),
     );
   }
 }
