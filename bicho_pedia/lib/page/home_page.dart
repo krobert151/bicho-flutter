@@ -46,7 +46,7 @@ class _HomePageState extends State<HomePage> {
                   style: GoogleFonts.openSans(color: Colors.white),
                 );
               } else {
-                return Text('Loading...');
+                return const Text('Loading...');
               }
             },
           ),
