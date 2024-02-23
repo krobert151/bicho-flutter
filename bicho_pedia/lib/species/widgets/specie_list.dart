@@ -40,7 +40,7 @@ class _SpecieListState extends State<SpecieList> {
               slivers: [
                 SliverToBoxAdapter(
                   child: SizedBox(
-                    height: 100, // Adjust the height of the static widget
+                    height: 100,
                     child: Text('Manolo',
                         style: GoogleFonts.openSans(
                           color: const Color.fromARGB(255, 255, 255, 255),
@@ -48,7 +48,7 @@ class _SpecieListState extends State<SpecieList> {
                   ),
                 ),
                 SliverFixedExtentList(
-                  itemExtent: 50, // Adjust the height of each item
+                  itemExtent: 50,
                   delegate: SliverChildBuilderDelegate(
                     (context, index) {
                       return Text(

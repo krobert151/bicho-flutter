@@ -11,7 +11,7 @@ class EncyClopediaPage extends StatefulWidget {
 }
 
 class _EncyClopediaPageState extends State<EncyClopediaPage> {
-  final serchText = TextEditingController();
+  late String search = '';
 
   @override
   Widget build(BuildContext context) {
@@ -24,25 +24,35 @@ class _EncyClopediaPageState extends State<EncyClopediaPage> {
           title: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text('Search Species',
-                  style: GoogleFonts.openSans(color: Colors.white)),
+              Text(search, style: GoogleFonts.openSans(color: Colors.white)),
               Form(
+                  onChanged: () {
+                    Form.of(primaryFocus!.context!).save();
+                  },
                   child: Row(
-                children: [
-                  SizedBox(
-                    height: 70,
-                    width: 200,
-                    child: TextFormField(
-                      controller: serchText,
-                    ),
-                  ),
-                ],
-              ))
+                    children: [
+                      SizedBox(
+                        height: 70,
+                        width: 170,
+                        child: TextFormField(
+                          onSaved: (String? value) {
+                            search = value!;
+                          },
+                        ),
+                      ),
+                      IconButton(
+                          onPressed: () {},
+                          icon: const Icon(
+                            Icons.search,
+                            color: Colors.white,
+                          ))
+                    ],
+                  ))
             ],
           ),
         ),
         body: SpecieList(
-          search: '',
+          search: search,
         ));
   }
 }
