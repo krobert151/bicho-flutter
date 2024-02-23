@@ -60,7 +60,7 @@ class _SimpleSpeciesListsState extends State<SimpleSpeciesLists> {
         } else if (state is SpecieSimpleError) {
           return Text(state.errorMessage);
         }
-        return Text('Manolo');
+        return const Text('Manolo');
       },
     );
   }
