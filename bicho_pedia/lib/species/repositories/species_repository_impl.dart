@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:bicho_pedia/species/model/specie_details_response.dart';
 import 'package:bicho_pedia/species/model/specie_response.dart';
 import 'package:bicho_pedia/species/model/species_simple_response.dart';
 import 'package:bicho_pedia/species/repositories/species_repository.dart';
@@ -49,6 +50,25 @@ class SpecieRepositoryImpl extends SpecieRepository {
     if (response.statusCode == 200) {
       List<dynamic> jsonResponse = json.decode(response.body);
       return jsonResponse.map((map) => SpeciesResponse.fromJson(map)).toList();
+    } else {
+      throw Exception('Failed to Fecth data');
+    }
+  }
+
+  @override
+  Future<SpecieDetailsResponse> getSpecieDetailsById(String id) async {
+    final SharedPreferences _prefs = await SharedPreferences.getInstance();
+    final String? token = _prefs.getString('token');
+
+    final response = await _httpClient.get(
+        Uri.parse("http://10.0.2.2:8080/species/speciebyid/$id"),
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json',
+          'Authorization': 'Bearer $token',
+        });
+    if (response.statusCode == 200) {
+      return SpecieDetailsResponse.fromJson(json.decode(response.body));
     } else {
       throw Exception('Failed to Fecth data');
     }

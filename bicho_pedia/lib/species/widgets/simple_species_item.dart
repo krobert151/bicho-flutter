@@ -1,3 +1,4 @@
+import 'package:bicho_pedia/page/specie_details.dart';
 import 'package:bicho_pedia/species/model/species_simple_response.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
@@ -66,7 +67,14 @@ class _SimpleSpeciesItemState extends State<SimpleSpeciesItem> {
                     )
                   ],
                 ),
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) =>
+                            SpecieDetailsPage(id: widget.specieResponse.id!),
+                      ));
+                },
               )
             ],
           ),
