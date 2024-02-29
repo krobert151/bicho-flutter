@@ -1,3 +1,5 @@
+import 'package:bicho_pedia/species/repositories/species_repository.dart';
+import 'package:bicho_pedia/species/widgets/specie_item.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:bicho_pedia/species/bloc/specie/specie_bloc.dart';
@@ -12,39 +14,19 @@ class EncyClopediaPage extends StatefulWidget {
 }
 
 class _EncyClopediaPageState extends State<EncyClopediaPage> {
-  late TextEditingController _searchController;
-  late String search = '';
+  late SpecieRepository specieRepository;
 
   @override
   void initState() {
-    _searchController = TextEditingController();
+    specieRepository = SpecieRepositoryImpl();
     super.initState();
-  }
-
-  @override
-  void dispose() {
-    _searchController.dispose();
-    super.dispose();
-  }
-
-  void updateSearch(String value) {
-    setState(() {
-      search = value;
-    });
-  }
-
-  void searchSpecies() {
-    if (search.isEmpty) {
-      BlocProvider.of<SpecieBloc>(context).add(DoSpecieEvent(10, 0, ''));
-    } else {
-      BlocProvider.of<SpecieBloc>(context).add(DoSpecieEvent(10, 0, search));
-    }
   }
 
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => SpecieBloc(SpecieRepositoryImpl()),
+      create: (context) =>
+          SpecieBloc(specieRepository)..add(DoSpecieEvent(10, 0, '')),
       child: Scaffold(
         backgroundColor: const Color.fromARGB(255, 19, 20, 13),
         appBar: AppBar(
@@ -56,18 +38,17 @@ class _EncyClopediaPageState extends State<EncyClopediaPage> {
             children: [
               Expanded(
                 child: TextFormField(
-                  controller: _searchController,
-                  onChanged: updateSearch,
                   style: const TextStyle(color: Colors.white),
                   decoration: const InputDecoration(
-                    hintText: 'Search by scientific name',
-                    hintStyle: TextStyle(color: Colors.grey),
+                    hintText: 'Search Especies',
+                    hintStyle:
+                        TextStyle(color: Color.fromARGB(255, 255, 255, 255)),
                     border: InputBorder.none,
                   ),
                 ),
               ),
               IconButton(
-                onPressed: searchSpecies,
+                onPressed: () {},
                 icon: const Icon(
                   Icons.search,
                   color: Colors.white,
@@ -78,7 +59,6 @@ class _EncyClopediaPageState extends State<EncyClopediaPage> {
         ),
         body: BlocBuilder<SpecieBloc, SpecieState>(
           builder: (BuildContext context, SpecieState state) {
-            print('State received: $state');
             if (state is SpecieInitial) {
               return Text(
                 'Cargando',
@@ -87,35 +67,181 @@ class _EncyClopediaPageState extends State<EncyClopediaPage> {
                 ),
               );
             } else if (state is SpecieSuccess) {
-              return SizedBox.expand(
-                child: CustomScrollView(
-                  slivers: [
-                    SliverToBoxAdapter(
-                      child: SizedBox(
-                        height: 100,
-                        child: Text(
-                          'Manolo',
-                          style: GoogleFonts.openSans(
-                            color: const Color.fromARGB(255, 255, 255, 255),
+              return Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 12),
+                child: SingleChildScrollView(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Container(
+                        height: 150,
+                        width: 370,
+                        decoration: const BoxDecoration(
+                            borderRadius: BorderRadius.all(Radius.circular(24)),
+                            image: DecorationImage(
+                                fit: BoxFit.cover,
+                                image: AssetImage('assets/SearchSpecies.png'))),
+                        child: Container(
+                          alignment: Alignment.bottomLeft,
+                          decoration: const BoxDecoration(
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(10)),
+                              gradient: LinearGradient(
+                                  begin: Alignment.topCenter,
+                                  end: Alignment.bottomCenter,
+                                  stops: [
+                                    0.1,
+                                    0.9
+                                  ],
+                                  colors: [
+                                    Color.fromARGB(0, 0, 0, 0),
+                                    Color.fromARGB(233, 19, 20, 13)
+                                  ])),
+                          child: Container(
+                            margin: EdgeInsets.all(15),
+                            padding: const EdgeInsets.all(8.0),
+                            child: Text('Encyclopedia',
+                                style: GoogleFonts.openSans(
+                                  fontWeight: FontWeight.w700,
+                                  color:
+                                      const Color.fromARGB(255, 255, 255, 255),
+                                )),
                           ),
                         ),
                       ),
-                    ),
-                    SliverFixedExtentList(
-                      itemExtent: 50,
-                      delegate: SliverChildBuilderDelegate(
-                        (context, index) {
-                          return Text(
-                            state.list[index].scientificName!,
-                            style: GoogleFonts.openSans(
-                              color: const Color.fromARGB(255, 255, 255, 255),
-                            ),
-                          );
-                        },
-                        childCount: state.list.length,
+                      Padding(
+                        padding: const EdgeInsets.symmetric(vertical: 15),
+                        child: Container(
+                          height: 40,
+                          width: 370,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.all(Radius.circular(8)),
+                            color: Color.fromARGB(255, 48, 49, 45),
+                          ),
+                          child: ListView(
+                              scrollDirection: Axis.horizontal,
+                              children: [
+                                TextButton(
+                                    onPressed: () {},
+                                    child: Container(
+                                      height: 30,
+                                      width: 25,
+                                      decoration: const BoxDecoration(
+                                          image: DecorationImage(
+                                              fit: BoxFit.fill,
+                                              image: AssetImage(
+                                                  'assets/Amphibian.png'))),
+                                    )),
+                                TextButton(
+                                    onPressed: () {},
+                                    child: Container(
+                                      height: 30,
+                                      width: 25,
+                                      decoration: const BoxDecoration(
+                                          image: DecorationImage(
+                                              fit: BoxFit.fill,
+                                              image: AssetImage(
+                                                  'assets/Arachnid.png'))),
+                                    )),
+                                TextButton(
+                                    onPressed: () {},
+                                    child: Container(
+                                      height: 30,
+                                      width: 25,
+                                      decoration: const BoxDecoration(
+                                          image: DecorationImage(
+                                              fit: BoxFit.fill,
+                                              image: AssetImage(
+                                                  'assets/Bird.png'))),
+                                    )),
+                                TextButton(
+                                    onPressed: () {},
+                                    child: Container(
+                                      height: 30,
+                                      width: 25,
+                                      decoration: const BoxDecoration(
+                                          image: DecorationImage(
+                                              fit: BoxFit.fill,
+                                              image: AssetImage(
+                                                  'assets/Fish.png'))),
+                                    )),
+                                TextButton(
+                                    onPressed: () {},
+                                    child: Container(
+                                      height: 30,
+                                      width: 25,
+                                      decoration: const BoxDecoration(
+                                          image: DecorationImage(
+                                              fit: BoxFit.fill,
+                                              image: AssetImage(
+                                                  'assets/Insect.png'))),
+                                    )),
+                                TextButton(
+                                    onPressed: () {},
+                                    child: Container(
+                                      height: 30,
+                                      width: 25,
+                                      decoration: const BoxDecoration(
+                                          image: DecorationImage(
+                                              fit: BoxFit.fill,
+                                              image: AssetImage(
+                                                  'assets/Lizzard.png'))),
+                                    )),
+                                TextButton(
+                                    onPressed: () {},
+                                    child: Container(
+                                      height: 30,
+                                      width: 25,
+                                      decoration: const BoxDecoration(
+                                          image: DecorationImage(
+                                              fit: BoxFit.fill,
+                                              image: AssetImage(
+                                                  'assets/Mammal.png'))),
+                                    )),
+                                TextButton(
+                                    onPressed: () {},
+                                    child: Container(
+                                      height: 30,
+                                      width: 25,
+                                      decoration: const BoxDecoration(
+                                          image: DecorationImage(
+                                              fit: BoxFit.fill,
+                                              image: AssetImage(
+                                                  'assets/Worm.png'))),
+                                    )),
+                              ]),
+                        ),
                       ),
-                    ),
-                  ],
+                      SizedBox(
+                        height: 900,
+                        child: LayoutBuilder(
+                          builder: (BuildContext context,
+                              BoxConstraints constraints) {
+                            return GridView.builder(
+                              shrinkWrap: true,
+                              physics: const NeverScrollableScrollPhysics(),
+                              gridDelegate:
+                                  const SliverGridDelegateWithFixedCrossAxisCount(
+                                crossAxisCount: 2,
+                                childAspectRatio: 100 / 140,
+                              ),
+                              itemCount: state.list.length,
+                              itemBuilder: (BuildContext context, int index) {
+                                return Padding(
+                                  padding:
+                                      const EdgeInsets.symmetric(vertical: 8),
+                                  child: SpeciesItem(
+                                    specieResponse: state.list[index],
+                                  ),
+                                );
+                              },
+                            );
+                          },
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
               );
             } else if (state is SpecieError) {

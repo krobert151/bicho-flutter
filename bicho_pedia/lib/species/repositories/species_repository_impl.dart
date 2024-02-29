@@ -38,40 +38,19 @@ class SpecieRepositoryImpl extends SpecieRepository {
       int count, int page, String specie) async {
     final SharedPreferences _prefs = await SharedPreferences.getInstance();
     final String? token = _prefs.getString('token');
-    final String? search = 'search=scientificName:*$specie*';
 
-    if (search == 'search=scientificName:**') {
-      final response = await _httpClient.get(
-          Uri.parse("http://10.0.2.2:8080/species/allspecies?c=$count&p=$page"),
-          headers: {
-            'Content-Type': 'application/json',
-            'Accept': 'application/json',
-            'Authorization': 'Bearer $token',
-          });
-      if (response.statusCode == 200) {
-        List<dynamic> jsonResponse = json.decode(response.body);
-        return jsonResponse
-            .map((map) => SpeciesResponse.fromJson(map))
-            .toList();
-      } else {
-        throw Exception('Failed to Fecth data');
-      }
+    final response = await _httpClient.get(
+        Uri.parse("http://10.0.2.2:8080/species/allspecies?c=$count&p=$page"),
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json',
+          'Authorization': 'Bearer $token',
+        });
+    if (response.statusCode == 200) {
+      List<dynamic> jsonResponse = json.decode(response.body);
+      return jsonResponse.map((map) => SpeciesResponse.fromJson(map)).toList();
     } else {
-      final response = await _httpClient.get(
-          Uri.parse("http://10.0.2.2:8080/species/allspecies?$search"),
-          headers: {
-            'Content-Type': 'application/json',
-            'Accept': 'application/json',
-            'Authorization': 'Bearer $token',
-          });
-      if (response.statusCode == 200) {
-        List<dynamic> jsonResponse = json.decode(response.body);
-        return jsonResponse
-            .map((map) => SpeciesResponse.fromJson(map))
-            .toList();
-      } else {
-        throw Exception('Failed to Fecth data');
-      }
+      throw Exception('Failed to Fecth data');
     }
   }
 }
