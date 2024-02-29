@@ -84,6 +84,7 @@ flutter:
     - assets/Worm.png
     - assets/Insect.png
     - assets/SearchSpecies.png
+    - assets/Map.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

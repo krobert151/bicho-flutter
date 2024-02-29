@@ -1,3 +1,4 @@
+import 'package:bicho_pedia/page/encounters_page.dart';
 import 'package:bicho_pedia/page/encyclopedia_page.dart';
 import 'package:bicho_pedia/page/home_page.dart';
 import 'package:flutter/material.dart';
@@ -16,10 +17,7 @@ class _MenuScreenState extends State<MenuScreen> {
   static const List<Widget> _widgetOptions = <Widget>[
     HomePage(),
     EncyClopediaPage(),
-    Text(
-      'encounters',
-      style: optionStyle,
-    ),
+    EncountersPage(),
     Text(
       'user',
       style: optionStyle,
