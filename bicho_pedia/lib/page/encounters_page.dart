@@ -2,7 +2,7 @@ import 'package:bicho_pedia/encounters/bloc/encounter/encounter_bloc.dart';
 import 'package:bicho_pedia/encounters/repository/encounters_repository.dart';
 import 'package:bicho_pedia/encounters/repository/encounters_repository_impl.dart';
 import 'package:bicho_pedia/encounters/widgets/encounter_item.dart';
-import 'package:bicho_pedia/page/encounters_map.dart';
+import 'package:bicho_pedia/encounters/widgets/encounters_map.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';

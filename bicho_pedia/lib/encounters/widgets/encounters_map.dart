@@ -1,8 +1,9 @@
 import 'dart:async';
 
 import 'package:bicho_pedia/encounters/bloc/markes/markers_bloc.dart';
+import 'package:bicho_pedia/encounters/repository/encounters_repository.dart';
+import 'package:bicho_pedia/encounters/repository/encounters_repository_impl.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
@@ -16,6 +17,15 @@ class MapEncounters extends StatefulWidget {
 class _MapEncountersState extends State<MapEncounters> {
   final Completer<GoogleMapController> _completer =
       Completer<GoogleMapController>();
+  late EncountersRepository encountersRepository;
+  late Set<Marker> markers = {};
+
+  @override
+  void initState() {
+    encountersRepository = EncountersRepositoryImpl();
+    _getMarkers();
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -33,13 +43,13 @@ class _MapEncountersState extends State<MapEncounters> {
               onMapCreated: (GoogleMapController controller) {
                 _completer.complete(controller);
               },
-              markers: _getMarkers(),
+              markers: markers, // Utilizar el conjunto de marcadores actual
             );
           } else if (snapshot.hasError) {
             return Center(child: Text('Error: ${snapshot.error}'));
           }
 
-          return Center(child: CircularProgressIndicator());
+          return const Center(child: CircularProgressIndicator());
         },
       ),
     );
@@ -69,13 +79,25 @@ class _MapEncountersState extends State<MapEncounters> {
     return await Geolocator.getCurrentPosition();
   }
 
-  _getMarkers() {
-return BlocBuilder<MarkersBloc,MarkersState>(builder: (BuildContext context,MarkersState state) {
-  if(state is MarkersSuccess){
-    return 
-  }
-  return
-},);
+  void _getMarkers() {
+    final bloc = MarkersBloc(encountersRepository);
+    bloc.add(DoMarkersEvent());
 
+    bloc.stream.listen((MarkersState state) {
+      if (state is MarkersSuccess) {
+        final newMarkers = state.list.map((mark) {
+          return Marker(
+            markerId: MarkerId(mark.id!),
+            position: LatLng(
+                double.parse(mark.latitud!), double.parse(mark.longuitud!)),
+            onTap: () {},
+          );
+        }).toSet();
+
+        setState(() {
+          markers = newMarkers;
+        });
+      }
+    });
   }
 }
