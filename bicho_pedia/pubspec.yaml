@@ -48,6 +48,8 @@ dependencies:
   blur: ^3.1.0
   gap: ^3.0.1
   palette_generator: ^0.3.3+3
+  google_maps_flutter: ^2.2.8
+  geolocator: ^11.0.0
 
 dev_dependencies:
   flutter_test:
