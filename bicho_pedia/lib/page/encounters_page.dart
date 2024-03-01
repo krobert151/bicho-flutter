@@ -2,6 +2,7 @@ import 'package:bicho_pedia/encounters/bloc/encounter/encounter_bloc.dart';
 import 'package:bicho_pedia/encounters/repository/encounters_repository.dart';
 import 'package:bicho_pedia/encounters/repository/encounters_repository_impl.dart';
 import 'package:bicho_pedia/encounters/widgets/encounter_item.dart';
+import 'package:bicho_pedia/encounters/widgets/encounters_map.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -74,39 +75,49 @@ class _EncountersPageState extends State<EncountersPage> {
                     crossAxisAlignment: CrossAxisAlignment.center,
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Container(
-                        height: 150,
-                        width: 370,
-                        decoration: const BoxDecoration(
-                            borderRadius: BorderRadius.all(Radius.circular(24)),
-                            image: DecorationImage(
-                                fit: BoxFit.cover,
-                                image: AssetImage('assets/Map.png'))),
+                      TextButton(
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => const MapEncounters()),
+                          );
+                        },
                         child: Container(
-                          alignment: Alignment.bottomLeft,
+                          height: 150,
+                          width: 370,
                           decoration: const BoxDecoration(
                               borderRadius:
-                                  BorderRadius.all(Radius.circular(10)),
-                              gradient: LinearGradient(
-                                  begin: Alignment.topCenter,
-                                  end: Alignment.bottomCenter,
-                                  stops: [
-                                    0.1,
-                                    0.9
-                                  ],
-                                  colors: [
-                                    Color.fromARGB(0, 0, 0, 0),
-                                    Color.fromARGB(233, 19, 20, 13)
-                                  ])),
+                                  BorderRadius.all(Radius.circular(24)),
+                              image: DecorationImage(
+                                  fit: BoxFit.cover,
+                                  image: AssetImage('assets/Map.png'))),
                           child: Container(
-                            margin: EdgeInsets.all(15),
-                            padding: const EdgeInsets.all(8.0),
-                            child: Text('Map',
-                                style: GoogleFonts.openSans(
-                                  fontWeight: FontWeight.w700,
-                                  color:
-                                      const Color.fromARGB(255, 255, 255, 255),
-                                )),
+                            alignment: Alignment.bottomLeft,
+                            decoration: const BoxDecoration(
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(10)),
+                                gradient: LinearGradient(
+                                    begin: Alignment.topCenter,
+                                    end: Alignment.bottomCenter,
+                                    stops: [
+                                      0.1,
+                                      0.9
+                                    ],
+                                    colors: [
+                                      Color.fromARGB(0, 0, 0, 0),
+                                      Color.fromARGB(233, 19, 20, 13)
+                                    ])),
+                            child: Container(
+                              margin: EdgeInsets.all(15),
+                              padding: const EdgeInsets.all(8.0),
+                              child: Text('Map',
+                                  style: GoogleFonts.openSans(
+                                    fontWeight: FontWeight.w700,
+                                    color: const Color.fromARGB(
+                                        255, 255, 255, 255),
+                                  )),
+                            ),
                           ),
                         ),
                       ),
@@ -115,7 +126,7 @@ class _EncountersPageState extends State<EncountersPage> {
                         child: Container(
                           height: 40,
                           width: 370,
-                          decoration: BoxDecoration(
+                          decoration: const BoxDecoration(
                             borderRadius: BorderRadius.all(Radius.circular(8)),
                             color: Color.fromARGB(255, 48, 49, 45),
                           ),
