@@ -49,6 +49,7 @@ dependencies:
   palette_generator: ^0.3.3+3
   google_maps_flutter: ^2.2.8
   geolocator: ^11.0.0
+  carousel_slider: ^4.2.1
 
 dev_dependencies:
   flutter_test:
@@ -86,6 +87,13 @@ flutter:
     - assets/Insect.png
     - assets/SearchSpecies.png
     - assets/Map.png
+    - assets/CR.png
+    - assets/EN.png
+    - assets/EW.png
+    - assets/EX.png
+    - assets/LC.png
+    - assets/NT.png
+    - assets/VU.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

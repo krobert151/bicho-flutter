@@ -1,3 +1,4 @@
+import 'package:bicho_pedia/encounters/model/encounter_detail_response.dart';
 import 'package:bicho_pedia/encounters/model/encounter_response.dart';
 import 'package:bicho_pedia/encounters/model/encounter_simple_response.dart';
 import 'package:bicho_pedia/encounters/model/markes_response.dart';
@@ -10,4 +11,6 @@ abstract class EncountersRepository {
       int count, int page, String search);
 
   Future<List<MarkersResponse>> getMarkers();
+
+  Future<EncounterDetailsResponse> getEncounterResponse(String id);
 }
