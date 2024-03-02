@@ -2,7 +2,6 @@ import 'package:bicho_pedia/encounters/widgets/simple_encounters_list.dart';
 import 'package:bicho_pedia/species/widgets/simple_species_list.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get_connect/http/src/utils/utils.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class HomePage extends StatefulWidget {
@@ -43,7 +42,8 @@ class _HomePageState extends State<HomePage> {
               if (snapshot.hasData) {
                 return Text(
                   'Hello ${snapshot.data}',
-                  style: GoogleFonts.openSans(color: Colors.white),
+                  style: const TextStyle(
+                      fontFamily: 'OpenSans', color: Colors.white),
                 );
               } else {
                 return const Text('Loading...');

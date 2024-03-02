@@ -1,7 +1,7 @@
+import 'package:bicho_pedia/page/specie_details.dart';
 import 'package:bicho_pedia/species/model/species_simple_response.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 class SimpleSpeciesItem extends StatefulWidget {
   final SpeciesSimpleResponse specieResponse;
@@ -49,24 +49,33 @@ class _SimpleSpeciesItemState extends State<SimpleSpeciesItem> {
               Text(
                 textAlign: TextAlign.start,
                 widget.specieResponse.scientificName!,
-                style: GoogleFonts.openSans(color: Colors.white),
+                style: const TextStyle(
+                    fontFamily: 'OpenSans', color: Colors.white),
               ),
               TextButton(
                 style: TextButton.styleFrom(padding: EdgeInsets.all(0)),
-                child: Row(
+                child: const Row(
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
-                    const Icon(Icons.menu, color: Colors.white, size: 15),
+                    Icon(Icons.menu, color: Colors.white, size: 15),
                     Text(
                       ' Read',
-                      style: GoogleFonts.openSans(
+                      style: TextStyle(
+                          fontFamily: 'OpenSans',
                           color: Colors.white,
                           fontSize: 10,
                           fontWeight: FontWeight.w200),
                     )
                   ],
                 ),
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) =>
+                            SpecieDetailsPage(id: widget.specieResponse.id!),
+                      ));
+                },
               )
             ],
           ),

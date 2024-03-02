@@ -1,3 +1,4 @@
+import 'package:bicho_pedia/species/model/specie_details_response.dart';
 import 'package:bicho_pedia/species/model/specie_response.dart';
 import 'package:bicho_pedia/species/model/species_simple_response.dart';
 
@@ -7,4 +8,6 @@ abstract class SpecieRepository {
 
   Future<List<SpeciesResponse>> getSpeciesLists(
       int count, int page, String search);
+
+  Future<SpecieDetailsResponse> getSpecieDetailsById(String id);
 }

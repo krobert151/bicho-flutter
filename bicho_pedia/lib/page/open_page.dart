@@ -1,6 +1,5 @@
 import 'package:bicho_pedia/page/login_page.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 class OpenApp extends StatelessWidget {
   const OpenApp({super.key});
@@ -30,13 +29,13 @@ class OpenApp extends StatelessWidget {
                           Color.fromARGB(0, 0, 0, 0),
                           Color.fromARGB(255, 0, 0, 0)
                         ])),
-                    child: Text(
+                    child: const Text(
                       'BichoPedia 2',
-                      style: GoogleFonts.openSans(
-                          textStyle: const TextStyle(
-                              color: Color(0xFFFFFFFF),
-                              fontSize: 34,
-                              fontWeight: FontWeight.bold)),
+                      style: TextStyle(
+                          fontFamily: 'OpenSans',
+                          color: Color(0xFFFFFFFF),
+                          fontSize: 34,
+                          fontWeight: FontWeight.bold),
                     )),
                 Positioned(
                     right: 5,
@@ -58,16 +57,15 @@ class OpenApp extends StatelessWidget {
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            Padding(
-                              padding: const EdgeInsets.all(8.0),
+                            const Padding(
+                              padding: EdgeInsets.all(8.0),
                               child: Text(
                                 'Next',
-                                style: GoogleFonts.openSans(
-                                    textStyle: const TextStyle(
-                                        fontSize: 20,
-                                        fontWeight: FontWeight.w500,
-                                        color: Color.fromARGB(
-                                            255, 255, 255, 255))),
+                                style: TextStyle(
+                                    fontFamily: 'OpenSans',
+                                    fontSize: 20,
+                                    fontWeight: FontWeight.w500,
+                                    color: Color.fromARGB(255, 255, 255, 255)),
                               ),
                             ),
                             SizedBox(
