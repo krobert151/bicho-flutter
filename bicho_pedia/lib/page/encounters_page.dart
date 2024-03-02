@@ -5,7 +5,6 @@ import 'package:bicho_pedia/encounters/widgets/encounter_item.dart';
 import 'package:bicho_pedia/encounters/widgets/encounters_map.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 class EncountersPage extends StatefulWidget {
   const EncountersPage({super.key});
@@ -61,10 +60,11 @@ class _EncountersPageState extends State<EncountersPage> {
         body: BlocBuilder<EncounterBloc, EncounterState>(
           builder: (BuildContext context, EncounterState state) {
             if (state is EncounterInitial) {
-              return Text(
+              return const Text(
                 'Cargando',
-                style: GoogleFonts.openSans(
-                  color: const Color.fromARGB(255, 255, 255, 255),
+                style: TextStyle(
+                  fontFamily: 'OpenSans',
+                  color: Color.fromARGB(255, 255, 255, 255),
                 ),
               );
             } else if (state is EncounterSuccess) {
@@ -109,13 +109,13 @@ class _EncountersPageState extends State<EncountersPage> {
                                       Color.fromARGB(233, 19, 20, 13)
                                     ])),
                             child: Container(
-                              margin: EdgeInsets.all(15),
+                              margin: const EdgeInsets.all(15),
                               padding: const EdgeInsets.all(8.0),
-                              child: Text('Map',
-                                  style: GoogleFonts.openSans(
+                              child: const Text('Map',
+                                  style: TextStyle(
+                                    fontFamily: 'OpenSans',
                                     fontWeight: FontWeight.w700,
-                                    color: const Color.fromARGB(
-                                        255, 255, 255, 255),
+                                    color: Color.fromARGB(255, 255, 255, 255),
                                   )),
                             ),
                           ),

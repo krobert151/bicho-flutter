@@ -4,7 +4,6 @@ import 'package:bicho_pedia/encounters/repository/encounters_repository_impl.dar
 import 'package:bicho_pedia/encounters/widgets/simple_encounters_item.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 class SimpleEncountersList extends StatefulWidget {
   const SimpleEncountersList({super.key});
@@ -45,10 +44,11 @@ class _SimpleEncountersListState extends State<SimpleEncountersList> {
                   alignment: Alignment.centerRight,
                   child: TextButton(
                       onPressed: () {},
-                      child: Text(
+                      child: const Text(
                         textAlign: TextAlign.end,
                         'Show All',
-                        style: GoogleFonts.openSans(
+                        style: TextStyle(
+                            fontFamily: 'OpenSans',
                             color: Color.fromARGB(255, 190, 227, 97)),
                       )),
                 ),
@@ -67,9 +67,11 @@ class _SimpleEncountersListState extends State<SimpleEncountersList> {
           );
         } else if (state is EncounterSimpleError) {
           return Text(state.errorMessage,
-              style: GoogleFonts.openSans(color: Colors.white));
+              style:
+                  const TextStyle(fontFamily: 'OpenSans', color: Colors.white));
         }
-        return Text('Manolo', style: GoogleFonts.openSans(color: Colors.white));
+        return const Text('Manolo',
+            style: TextStyle(fontFamily: 'OpenSans', color: Colors.white));
       },
     );
   }

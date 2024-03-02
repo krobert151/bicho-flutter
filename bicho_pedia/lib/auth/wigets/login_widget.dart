@@ -8,7 +8,6 @@ import 'package:bicho_pedia/page/register_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gap/gap.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 class LoginWidget extends StatefulWidget {
   const LoginWidget({super.key});
@@ -83,33 +82,34 @@ class _LoginWidgetState extends State<LoginWidget> {
                 padding: const EdgeInsets.all(25.0),
                 child: Column(
                   children: [
-                    Text(
+                    const Text(
                       'Welcome Back!',
                       textAlign: TextAlign.center,
-                      style: GoogleFonts.openSans(
-                          textStyle: const TextStyle(
+                      style: TextStyle(
+                        fontFamily: 'OpenSans',
                         color: Colors.white,
                         fontSize: 40,
                         fontWeight: FontWeight.bold,
-                      )),
+                      ),
                     ),
-                    Text(
+                    const Text(
                       "Welcome back we miss you!",
                       textAlign: TextAlign.left,
-                      style: GoogleFonts.openSans(
-                          textStyle: const TextStyle(
-                        color: Color.fromARGB(255, 171, 171, 171),
-                        fontSize: 12,
-                      )),
+                      style: TextStyle(
+                        fontFamily: 'OpenSans',
+                        color: Colors.white,
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
                     const Gap(20),
-                    SizedBox(
+                    const SizedBox(
                       width: double.infinity,
                       child: Text("Username",
                           textAlign: TextAlign.left,
-                          style: GoogleFonts.openSans(
-                              textStyle: const TextStyle(
-                                  color: Color.fromARGB(255, 164, 164, 164)))),
+                          style: TextStyle(
+                              fontFamily: 'OpenSans',
+                              color: Color.fromARGB(255, 164, 164, 164))),
                     ),
                     const Gap(5),
                     TextFormField(
@@ -145,13 +145,13 @@ class _LoginWidgetState extends State<LoginWidget> {
                     const SizedBox(
                       height: 20,
                     ),
-                    SizedBox(
+                    const SizedBox(
                       width: double.infinity,
                       child: Text("Password",
                           textAlign: TextAlign.left,
-                          style: GoogleFonts.openSans(
-                              textStyle: const TextStyle(
-                                  color: Color.fromARGB(255, 164, 164, 164)))),
+                          style: TextStyle(
+                              fontFamily: 'OpenSans',
+                              color: Color.fromARGB(255, 164, 164, 164))),
                     ),
                     const Gap(5),
                     TextFormField(
@@ -188,11 +188,10 @@ class _LoginWidgetState extends State<LoginWidget> {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         TextButton(
-                          child: Text('Register',
-                              style: GoogleFonts.openSans(
-                                  textStyle: const TextStyle(
-                                      color:
-                                          Color.fromARGB(255, 164, 164, 164)))),
+                          child: const Text('Register',
+                              style: TextStyle(
+                                  fontFamily: 'OpenSans',
+                                  color: Color.fromARGB(255, 164, 164, 164))),
                           onPressed: () {
                             Navigator.push(
                               context,
@@ -202,10 +201,10 @@ class _LoginWidgetState extends State<LoginWidget> {
                           },
                         ),
                         TextButton(
-                          child: Text('Forgot Password',
-                              style: GoogleFonts.openSans(
-                                textStyle: const TextStyle(
-                                    color: Color.fromARGB(255, 164, 164, 164)),
+                          child: const Text('Forgot Password',
+                              style: TextStyle(
+                                fontFamily: 'OpenSans',
+                                color: Color.fromARGB(255, 164, 164, 164),
                               )),
                           onPressed: () {},
                         )
@@ -229,12 +228,12 @@ class _LoginWidgetState extends State<LoginWidget> {
                             shape: const RoundedRectangleBorder(
                                 borderRadius:
                                     BorderRadius.all(Radius.circular(15)))),
-                        child: Text('Sign In',
-                            style: GoogleFonts.openSans(
-                                textStyle: const TextStyle(
-                                    color: Colors.white,
-                                    fontSize: 20,
-                                    fontWeight: FontWeight.w600))),
+                        child: const Text('Sign In',
+                            style: TextStyle(
+                                fontFamily: 'OpenSans',
+                                color: Colors.white,
+                                fontSize: 20,
+                                fontWeight: FontWeight.w600)),
                         onPressed: () {
                           if (_formLogin.currentState!.validate()) {
                             _loginBloc.add(
