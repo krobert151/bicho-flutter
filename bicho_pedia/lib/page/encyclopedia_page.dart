@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:bicho_pedia/species/bloc/specie/specie_bloc.dart';
 import 'package:bicho_pedia/species/repositories/species_repository_impl.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 class EncyClopediaPage extends StatefulWidget {
   const EncyClopediaPage({Key? key}) : super(key: key);
@@ -60,10 +59,11 @@ class _EncyClopediaPageState extends State<EncyClopediaPage> {
         body: BlocBuilder<SpecieBloc, SpecieState>(
           builder: (BuildContext context, SpecieState state) {
             if (state is SpecieInitial) {
-              return Text(
+              return const Text(
                 'Cargando',
-                style: GoogleFonts.openSans(
-                  color: const Color.fromARGB(255, 255, 255, 255),
+                style: TextStyle(
+                  fontFamily: 'OpenSans',
+                  color: Color.fromARGB(255, 255, 255, 255),
                 ),
               );
             } else if (state is SpecieSuccess) {
@@ -99,13 +99,13 @@ class _EncyClopediaPageState extends State<EncyClopediaPage> {
                                     Color.fromARGB(233, 19, 20, 13)
                                   ])),
                           child: Container(
-                            margin: EdgeInsets.all(15),
+                            margin: const EdgeInsets.all(15),
                             padding: const EdgeInsets.all(8.0),
-                            child: Text('Encyclopedia',
-                                style: GoogleFonts.openSans(
+                            child: const Text('Encyclopedia',
+                                style: TextStyle(
+                                  fontFamily: 'OpenSans',
                                   fontWeight: FontWeight.w700,
-                                  color:
-                                      const Color.fromARGB(255, 255, 255, 255),
+                                  color: Color.fromARGB(255, 255, 255, 255),
                                 )),
                           ),
                         ),
@@ -115,7 +115,7 @@ class _EncyClopediaPageState extends State<EncyClopediaPage> {
                         child: Container(
                           height: 40,
                           width: 370,
-                          decoration: BoxDecoration(
+                          decoration: const BoxDecoration(
                             borderRadius: BorderRadius.all(Radius.circular(8)),
                             color: Color.fromARGB(255, 48, 49, 45),
                           ),

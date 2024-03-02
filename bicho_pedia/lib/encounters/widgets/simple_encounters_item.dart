@@ -1,6 +1,5 @@
 import 'package:bicho_pedia/encounters/model/encounter_simple_response.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 class SimpleEncounterItem extends StatefulWidget {
   final EncounterSimpleResponse encounterResponse;
@@ -47,26 +46,28 @@ class _SimpleEncounterItemState extends State<SimpleEncounterItem> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(widget.encounterResponse.scientificName!,
-                          style: GoogleFonts.openSans(
+                          style: const TextStyle(
+                              fontFamily: 'OpenSans',
                               color: Colors.white,
                               fontSize: 15,
                               fontWeight: FontWeight.w600)),
                       Text(widget.encounterResponse.description!,
                           overflow: TextOverflow.fade,
-                          style: GoogleFonts.openSans(
+                          style: const TextStyle(
+                              fontFamily: 'OpenSans',
                               color: Colors.white,
                               fontSize: 10,
                               fontWeight: FontWeight.w600)),
                       TextButton(
                         style: TextButton.styleFrom(padding: EdgeInsets.all(0)),
-                        child: Row(
+                        child: const Row(
                           mainAxisAlignment: MainAxisAlignment.start,
                           children: [
-                            const Icon(Icons.menu,
-                                color: Colors.white, size: 15),
+                            Icon(Icons.menu, color: Colors.white, size: 15),
                             Text(
                               'View More',
-                              style: GoogleFonts.openSans(
+                              style: TextStyle(
+                                  fontFamily: 'OpenSans',
                                   color: Colors.white,
                                   fontSize: 10,
                                   fontWeight: FontWeight.w200),

@@ -4,7 +4,6 @@ import 'package:bicho_pedia/species/repositories/species_repository_impl.dart';
 import 'package:bicho_pedia/species/widgets/simple_species_item.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 class SimpleSpeciesLists extends StatefulWidget {
   const SimpleSpeciesLists({super.key});
@@ -39,11 +38,13 @@ class _SimpleSpeciesListsState extends State<SimpleSpeciesLists> {
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Padding(
-                padding: const EdgeInsets.fromLTRB(10, 0, 10, 10),
+              const Padding(
+                padding: EdgeInsets.fromLTRB(10, 0, 10, 10),
                 child: Text('Species in danger of extinction',
-                    style: GoogleFonts.openSans(
-                        color: Colors.white, fontWeight: FontWeight.bold)),
+                    style: TextStyle(
+                        fontFamily: 'OpenSans',
+                        color: Colors.white,
+                        fontWeight: FontWeight.bold)),
               ),
               SizedBox(
                 height: 260,
