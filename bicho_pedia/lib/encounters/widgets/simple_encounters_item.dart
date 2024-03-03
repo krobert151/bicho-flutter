@@ -46,22 +46,29 @@ class _SimpleEncounterItemState extends State<SimpleEncounterItem> {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text(widget.encounterResponse.scientificName!,
-                          style: const TextStyle(
-                              fontFamily: 'OpenSans',
-                              color: Colors.white,
-                              fontSize: 15,
-                              fontWeight: FontWeight.w600)),
-                      Text(widget.encounterResponse.description!,
-                          overflow: TextOverflow.fade,
-                          style: const TextStyle(
-                              fontFamily: 'OpenSans',
-                              color: Colors.white,
-                              fontSize: 10,
-                              fontWeight: FontWeight.w600)),
+                      SizedBox(
+                        width: 150,
+                        child: Text(widget.encounterResponse.scientificName!,
+                            style: const TextStyle(
+                                overflow: TextOverflow.ellipsis,
+                                fontFamily: 'OpenSans',
+                                color: Colors.white,
+                                fontSize: 15,
+                                fontWeight: FontWeight.w600)),
+                      ),
+                      SizedBox(
+                        width: 150,
+                        child: Text(widget.encounterResponse.description!,
+                            overflow: TextOverflow.ellipsis,
+                            style: const TextStyle(
+                                fontFamily: 'OpenSans',
+                                color: Colors.white,
+                                fontSize: 10,
+                                fontWeight: FontWeight.w600)),
+                      ),
                       TextButton(
-                          style:
-                              TextButton.styleFrom(padding: EdgeInsets.all(0)),
+                          style: TextButton.styleFrom(
+                              padding: const EdgeInsets.all(0)),
                           child: const Row(
                             mainAxisAlignment: MainAxisAlignment.start,
                             children: [

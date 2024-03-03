@@ -49,6 +49,7 @@ class _SimpleSpeciesItemState extends State<SimpleSpeciesItem> {
               Text(
                 textAlign: TextAlign.start,
                 widget.specieResponse.scientificName!,
+                overflow: TextOverflow.ellipsis,
                 style: const TextStyle(
                     fontFamily: 'OpenSans', color: Colors.white),
               ),

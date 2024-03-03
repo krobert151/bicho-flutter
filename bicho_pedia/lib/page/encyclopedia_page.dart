@@ -213,32 +213,29 @@ class _EncyClopediaPageState extends State<EncyClopediaPage> {
                               ]),
                         ),
                       ),
-                      SizedBox(
-                        height: 900,
-                        child: LayoutBuilder(
-                          builder: (BuildContext context,
-                              BoxConstraints constraints) {
-                            return GridView.builder(
-                              shrinkWrap: true,
-                              physics: const NeverScrollableScrollPhysics(),
-                              gridDelegate:
-                                  const SliverGridDelegateWithFixedCrossAxisCount(
-                                crossAxisCount: 2,
-                                childAspectRatio: 100 / 140,
-                              ),
-                              itemCount: state.list.length,
-                              itemBuilder: (BuildContext context, int index) {
-                                return Padding(
-                                  padding:
-                                      const EdgeInsets.symmetric(vertical: 8),
-                                  child: SpeciesItem(
-                                    specieResponse: state.list[index],
-                                  ),
-                                );
-                              },
-                            );
-                          },
-                        ),
+                      LayoutBuilder(
+                        builder:
+                            (BuildContext context, BoxConstraints constraints) {
+                          return GridView.builder(
+                            shrinkWrap: true,
+                            physics: const NeverScrollableScrollPhysics(),
+                            gridDelegate:
+                                const SliverGridDelegateWithFixedCrossAxisCount(
+                              crossAxisCount: 2,
+                              childAspectRatio: 100 / 140,
+                            ),
+                            itemCount: state.list.length,
+                            itemBuilder: (BuildContext context, int index) {
+                              return Padding(
+                                padding:
+                                    const EdgeInsets.symmetric(vertical: 8),
+                                child: SpeciesItem(
+                                  specieResponse: state.list[index],
+                                ),
+                              );
+                            },
+                          );
+                        },
                       ),
                     ],
                   ),
