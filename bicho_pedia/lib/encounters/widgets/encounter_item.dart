@@ -1,4 +1,5 @@
 import 'package:bicho_pedia/encounters/model/encounter_response.dart';
+import 'package:bicho_pedia/page/encounter_detail_page.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 
@@ -61,22 +62,28 @@ class _EncounterItemState extends State<EncounterItem> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   TextButton(
-                    style: TextButton.styleFrom(padding: EdgeInsets.all(0)),
-                    child: const Row(
-                      children: [
-                        Icon(Icons.menu, color: Colors.white, size: 15),
-                        Text(
-                          ' Read',
-                          style: TextStyle(
-                              fontFamily: 'OpenSans',
-                              color: Colors.white,
-                              fontSize: 10,
-                              fontWeight: FontWeight.w200),
-                        )
-                      ],
-                    ),
-                    onPressed: () {},
-                  ),
+                      style: TextButton.styleFrom(padding: EdgeInsets.all(0)),
+                      child: const Row(
+                        children: [
+                          Icon(Icons.menu, color: Colors.white, size: 15),
+                          Text(
+                            ' Read',
+                            style: TextStyle(
+                                fontFamily: 'OpenSans',
+                                color: Colors.white,
+                                fontSize: 10,
+                                fontWeight: FontWeight.w200),
+                          )
+                        ],
+                      ),
+                      onPressed: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => EncounterDetailsPage(
+                                  id: widget.encounterResponse.id!),
+                            ));
+                      }),
                   Container(
                     height: 30,
                     width: 30,

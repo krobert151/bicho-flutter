@@ -225,7 +225,7 @@ class _EncountersPageState extends State<EncountersPage> {
                         ),
                       ),
                       SizedBox(
-                        height: 900,
+                        height: 1500,
                         child: LayoutBuilder(
                           builder: (BuildContext context,
                               BoxConstraints constraints) {

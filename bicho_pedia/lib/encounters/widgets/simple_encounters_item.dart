@@ -1,4 +1,5 @@
 import 'package:bicho_pedia/encounters/model/encounter_simple_response.dart';
+import 'package:bicho_pedia/page/encounter_detail_page.dart';
 import 'package:flutter/material.dart';
 
 class SimpleEncounterItem extends StatefulWidget {
@@ -45,37 +46,51 @@ class _SimpleEncounterItemState extends State<SimpleEncounterItem> {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text(widget.encounterResponse.scientificName!,
-                          style: const TextStyle(
-                              fontFamily: 'OpenSans',
-                              color: Colors.white,
-                              fontSize: 15,
-                              fontWeight: FontWeight.w600)),
-                      Text(widget.encounterResponse.description!,
-                          overflow: TextOverflow.fade,
-                          style: const TextStyle(
-                              fontFamily: 'OpenSans',
-                              color: Colors.white,
-                              fontSize: 10,
-                              fontWeight: FontWeight.w600)),
+                      SizedBox(
+                        width: 150,
+                        child: Text(widget.encounterResponse.scientificName!,
+                            style: const TextStyle(
+                                overflow: TextOverflow.ellipsis,
+                                fontFamily: 'OpenSans',
+                                color: Colors.white,
+                                fontSize: 15,
+                                fontWeight: FontWeight.w600)),
+                      ),
+                      SizedBox(
+                        width: 150,
+                        child: Text(widget.encounterResponse.description!,
+                            overflow: TextOverflow.ellipsis,
+                            style: const TextStyle(
+                                fontFamily: 'OpenSans',
+                                color: Colors.white,
+                                fontSize: 10,
+                                fontWeight: FontWeight.w600)),
+                      ),
                       TextButton(
-                        style: TextButton.styleFrom(padding: EdgeInsets.all(0)),
-                        child: const Row(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          children: [
-                            Icon(Icons.menu, color: Colors.white, size: 15),
-                            Text(
-                              'View More',
-                              style: TextStyle(
-                                  fontFamily: 'OpenSans',
-                                  color: Colors.white,
-                                  fontSize: 10,
-                                  fontWeight: FontWeight.w200),
-                            )
-                          ],
-                        ),
-                        onPressed: () {},
-                      )
+                          style: TextButton.styleFrom(
+                              padding: const EdgeInsets.all(0)),
+                          child: const Row(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            children: [
+                              Icon(Icons.menu, color: Colors.white, size: 15),
+                              Text(
+                                'View More',
+                                style: TextStyle(
+                                    fontFamily: 'OpenSans',
+                                    color: Colors.white,
+                                    fontSize: 10,
+                                    fontWeight: FontWeight.w200),
+                              )
+                            ],
+                          ),
+                          onPressed: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => EncounterDetailsPage(
+                                      id: widget.encounterResponse.id!),
+                                ));
+                          })
                     ],
                   ),
                 ),
