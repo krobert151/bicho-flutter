@@ -1,9 +1,7 @@
 import 'package:bicho_pedia/encounters/bloc/encounter_detail/encounter_details_bloc.dart';
 import 'package:bicho_pedia/encounters/repository/encounters_repository.dart';
 import 'package:bicho_pedia/encounters/repository/encounters_repository_impl.dart';
-import 'package:bicho_pedia/encounters/widgets/encounter_detail_location.dart';
 import 'package:bicho_pedia/encounters/widgets/encounter_details.dart';
-import 'package:bicho_pedia/encounters/widgets/encounters_details_gallery.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
