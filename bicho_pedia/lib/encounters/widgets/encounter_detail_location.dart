@@ -27,14 +27,18 @@ class _EncounterDetailsLocationState extends State<EncounterDetailsLocation> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      decoration: const BoxDecoration(
-          borderRadius: BorderRadius.all(Radius.circular(20))),
-      child: GoogleMap(
-        mapType: MapType.terrain,
-        initialCameraPosition: CameraPosition(
-            target: LatLng(double.parse(widget.lat), double.parse(widget.long)),
-            zoom: 12),
-        markers: set,
+      color: const Color.fromARGB(255, 19, 20, 13),
+      child: Container(
+        decoration: const BoxDecoration(
+            borderRadius: BorderRadius.all(Radius.circular(20))),
+        child: GoogleMap(
+          mapType: MapType.terrain,
+          initialCameraPosition: CameraPosition(
+              target:
+                  LatLng(double.parse(widget.lat), double.parse(widget.long)),
+              zoom: 12),
+          markers: set,
+        ),
       ),
     );
   }

@@ -81,7 +81,7 @@ class _UserInfoState extends State<UserInfo> {
                             fontWeight: FontWeight.w400,
                             fontSize: 12),
                       ),
-                      Gap(20),
+                      const Gap(20),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceAround,
                         children: [
@@ -139,15 +139,34 @@ class _UserInfoState extends State<UserInfo> {
                         ],
                       ),
                       const Gap(15),
-                      LinearPercentIndicator(
-                        barRadius: const Radius.circular(5),
-                        lineHeight: 4,
-                        backgroundColor: const Color.fromARGB(255, 0, 0, 0),
-                        progressColor: const Color.fromARGB(255, 190, 222, 97),
-                        percent: double.parse(
-                            (state.response.percentExp! / 100).toString()),
-                        alignment: MainAxisAlignment.center,
+                      Container(
                         width: 350,
+                        decoration: BoxDecoration(
+                          gradient: const LinearGradient(
+                            begin: Alignment.centerLeft,
+                            end: Alignment.centerRight,
+                            stops: [0.0, 0.95],
+                            colors: [
+                              Color.fromARGB(255, 190, 222, 97),
+                              Color.fromARGB(255, 0, 0, 0),
+                            ],
+                          ),
+                          border: Border.all(
+                            color: Colors.white,
+                            width: 0.5,
+                          ),
+                          borderRadius: BorderRadius.circular(50),
+                        ),
+                        child: LinearPercentIndicator(
+                          lineHeight: 4,
+                          backgroundColor: const Color.fromARGB(255, 0, 0, 0),
+                          progressColor:
+                              const Color.fromARGB(255, 190, 222, 97),
+                          percent: double.parse(
+                              (state.response.percentExp! / 100).toString()),
+                          alignment: MainAxisAlignment.start,
+                          width: 330,
+                        ),
                       ),
                     ],
                   ),
