@@ -11,7 +11,6 @@ void main() {
         BlocProvider<SpecieBloc>(
           create: (context) => SpecieBloc(SpecieRepositoryImpl()),
         ),
-        // Add more BlocProviders here if needed
       ],
       child: MyApp(),
     ),
