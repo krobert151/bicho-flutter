@@ -84,6 +84,7 @@ class _EncounterItemState extends State<EncounterItem> {
                                   id: widget.encounterResponse.id!),
                             ));
                       }),
+                  Gap(50),
                   Container(
                     height: 30,
                     width: 30,

@@ -1,6 +1,7 @@
 import 'package:bicho_pedia/page/encounters_page.dart';
 import 'package:bicho_pedia/page/encyclopedia_page.dart';
 import 'package:bicho_pedia/page/home_page.dart';
+import 'package:bicho_pedia/page/user_page.dart';
 import 'package:flutter/material.dart';
 
 class MenuScreen extends StatefulWidget {
@@ -12,16 +13,12 @@ class MenuScreen extends StatefulWidget {
 
 class _MenuScreenState extends State<MenuScreen> {
   int _selectedIndex = 0;
-  static const TextStyle optionStyle =
-      TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
+
   static const List<Widget> _widgetOptions = <Widget>[
     HomePage(),
     EncyClopediaPage(),
     EncountersPage(),
-    Text(
-      'user',
-      style: optionStyle,
-    ),
+    UserPage(),
   ];
 
   void _onItemTapped(int index) {
