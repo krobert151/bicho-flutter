@@ -175,7 +175,7 @@ class _UserInfoState extends State<UserInfo> {
             } else if (state is UserDetailsError) {
               return Text(state.errorMessage);
             }
-            return const CircularProgressIndicator();
+            return const Center(child: CircularProgressIndicator());
           },
         ));
   }

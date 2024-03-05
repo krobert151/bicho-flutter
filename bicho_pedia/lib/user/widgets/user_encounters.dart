@@ -47,9 +47,9 @@ class _UserEncountersState extends State<UserEncounters> {
               );
             } else if (state is UserEncountersError) {
               return Text(state.errorMessage,
-                  style: TextStyle(color: Colors.white));
+                  style: const TextStyle(color: Colors.white));
             }
-            return CircularProgressIndicator();
+            return const Center(child: CircularProgressIndicator());
           },
         ));
   }

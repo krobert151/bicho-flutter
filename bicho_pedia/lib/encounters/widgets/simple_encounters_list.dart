@@ -70,8 +70,7 @@ class _SimpleEncountersListState extends State<SimpleEncountersList> {
               style:
                   const TextStyle(fontFamily: 'OpenSans', color: Colors.white));
         }
-        return const Text('Manolo',
-            style: TextStyle(fontFamily: 'OpenSans', color: Colors.white));
+        return const Center(child: CircularProgressIndicator());
       },
     );
   }

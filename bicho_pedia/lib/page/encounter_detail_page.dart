@@ -39,7 +39,7 @@ class _EncounterDetailsPageState extends State<EncounterDetailsPage> {
             } else if (state is EncounterDetailsError) {
               return Text(state.errorMessage);
             }
-            return const CircularProgressIndicator.adaptive();
+            return const Center(child: CircularProgressIndicator());
           },
         ),
       ),

@@ -72,9 +72,9 @@ class _UserSavedListState extends State<UserSavedList> {
               );
             } else if (state is UserSavedListError) {
               return Text(state.errorMessage,
-                  style: TextStyle(color: Colors.white));
+                  style: const TextStyle(color: Colors.white));
             }
-            return CircularProgressIndicator();
+            return const Center(child: CircularProgressIndicator());
           },
         ));
   }

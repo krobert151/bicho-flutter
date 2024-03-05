@@ -55,7 +55,9 @@ class _EncounterItemState extends State<EncounterItem> {
                 textAlign: TextAlign.start,
                 widget.encounterResponse.scientificName!,
                 style: const TextStyle(
-                    fontFamily: 'OpenSans', color: Colors.white),
+                    overflow: TextOverflow.ellipsis,
+                    fontFamily: 'OpenSans',
+                    color: Colors.white),
               ),
               Row(
                 crossAxisAlignment: CrossAxisAlignment.center,

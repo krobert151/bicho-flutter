@@ -31,6 +31,6 @@ class _LoginPageState extends State<LoginPage> {
                       Color.fromARGB(0, 0, 0, 0),
                       Color.fromARGB(255, 0, 0, 0)
                     ])),
-                child: LoginWidget())));
+                child: const LoginWidget())));
   }
 }
