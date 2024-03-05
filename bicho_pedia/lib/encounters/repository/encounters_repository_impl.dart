@@ -4,6 +4,7 @@ import 'package:bicho_pedia/encounters/model/encounter_detail_response.dart';
 import 'package:bicho_pedia/encounters/model/encounter_response.dart';
 import 'package:bicho_pedia/encounters/model/encounter_simple_response.dart';
 import 'package:bicho_pedia/encounters/model/markes_response.dart';
+import 'package:bicho_pedia/encounters/model/new_encounter_dto.dart';
 import 'package:bicho_pedia/encounters/repository/encounters_repository.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:http/http.dart';
@@ -97,6 +98,27 @@ class EncountersRepositoryImpl extends EncountersRepository {
       return EncounterDetailsResponse.fromJson(jsonDecode(response.body));
     } else {
       throw Exception('Failed to Fetch data');
+    }
+  }
+
+  @override
+  Future<NewEncounterDTO> newEncounter(NewEncounterDTO newEncounterDTO) async {
+    final SharedPreferences _prefs = await SharedPreferences.getInstance();
+    final String? token = _prefs.getString('token');
+
+    final response = await _httpClient.post(
+        Uri.parse("http://10.0.2.2:8080/encounters/find/"),
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json',
+          'Authorization': 'Bearer $token',
+        },
+        body: jsonEncode(newEncounterDTO.toJson()));
+
+    if (response.statusCode == 201) {
+      return NewEncounterDTO.fromJson(json.decode(response.body));
+    } else {
+      throw Exception('Failed to Register');
     }
   }
 }

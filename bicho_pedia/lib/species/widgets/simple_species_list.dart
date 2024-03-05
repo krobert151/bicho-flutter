@@ -61,7 +61,7 @@ class _SimpleSpeciesListsState extends State<SimpleSpeciesLists> {
         } else if (state is SpecieSimpleError) {
           return Text(state.errorMessage);
         }
-        return const Text('Manolo');
+        return const Center(child: CircularProgressIndicator());
       },
     );
   }

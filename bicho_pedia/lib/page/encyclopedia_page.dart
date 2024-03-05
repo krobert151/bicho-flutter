@@ -244,7 +244,7 @@ class _EncyClopediaPageState extends State<EncyClopediaPage> {
             } else if (state is SpecieError) {
               return Text(state.errorMessage);
             }
-            return const Text('Manolo');
+            return const Center(child: CircularProgressIndicator());
           },
         ),
       ),

@@ -225,7 +225,6 @@ class _EncountersPageState extends State<EncountersPage> {
                         ),
                       ),
                       SizedBox(
-                        height: 1500,
                         child: LayoutBuilder(
                           builder: (BuildContext context,
                               BoxConstraints constraints) {
@@ -258,7 +257,7 @@ class _EncountersPageState extends State<EncountersPage> {
             } else if (state is EncounterError) {
               return Text(state.errorMessage);
             }
-            return const Text('Manolo');
+            return const Center(child: CircularProgressIndicator());
           },
         ),
       ),

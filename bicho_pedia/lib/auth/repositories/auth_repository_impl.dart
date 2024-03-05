@@ -25,7 +25,7 @@ class AuthRepositoryImpl extends AuthRepository {
   }
 
   @override
-  Future register(RegisterDto registerDto) async {
+  Future<LoginResponse> register(RegisterDto registerDto) async {
     final response =
         await _httpClient.post(Uri.parse("http://10.0.2.2:8080/auth/register"),
             headers: <String, String>{

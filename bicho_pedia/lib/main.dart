@@ -1,4 +1,4 @@
-import 'package:bicho_pedia/page/index.dart';
+import 'package:bicho_pedia/page/open_page.dart';
 import 'package:bicho_pedia/species/bloc/specie/specie_bloc.dart';
 import 'package:bicho_pedia/species/repositories/species_repository_impl.dart';
 import 'package:flutter/material.dart';

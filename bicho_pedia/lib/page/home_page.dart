@@ -46,7 +46,7 @@ class _HomePageState extends State<HomePage> {
                       fontFamily: 'OpenSans', color: Colors.white),
                 );
               } else {
-                return const Text('Loading...');
+                return const Center(child: CircularProgressIndicator());
               }
             },
           ),
